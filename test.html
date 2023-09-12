@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Country and City Selector</title>
+    <style>
+        /* Add some basic styles for layout */
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+        .dropdown {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dropdown">
+            <label for="country">Select Country:</label>
+            <select id="country">
+                <option value="usa">Cyprus</option>
+                <!-- Add more country options here -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="city">Select City:</label>
+            <select id="city">
+                <!-- Populate this dropdown based on the selected country using JavaScript -->
+            </select>
+        </div>
+    </div>
+
+    <!-- Create a div for the map -->
+    <div id="map" style="width: 600px; height: 400px;"></div>
+
+    <!-- Include the Google Maps JavaScript API (you'll need to replace YOUR_API_KEY) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+    <script>
+        // Function to initialize the map
+        function initMap() {
+            // Replace 'map' with the ID of the div where you want to display the map
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 0, lng: 0 }, // Default to the center of the world
+                zoom: 2, // Adjust the initial zoom level as needed
+            });
+
+            // Event listener to update the map when the country dropdown changes
+            document.getElementById('country').addEventListener('change', function () {
+                var selectedCountry = this.value;
+                // You can use selectedCountry to fetch and populate the city dropdown
+                // Here, we'll just set a default city for demonstration purposes
+                var selectedCity = 'defaultCity';
+                updateMap(selectedCity);
+            });
+        }
+
+        // Function to update the map based on the selected city
+        function updateMap(city) {
+            // Replace with your code to update the map based on the selected city
+            // You can use the Google Maps API to add markers or perform other map operations
+            // Example: var marker = new google.maps.Marker({ position: { lat: 0, lng: 0 }, map: map, title: 'Selected City' });
+        }
+    </script>
+</body>
+</html>
